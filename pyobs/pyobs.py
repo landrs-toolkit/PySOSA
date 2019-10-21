@@ -9,7 +9,7 @@ Todo:
 
 """
 
-from rdflib import Graph,URIRef, BNode, Literal, Namespace, RDF
+from rdflib import Graph,URIRef, BNode, Literal, Namespace, RDF, RDFS
 from pyld import jsonld
 from datetime import datetime
 from pytz import timezone
@@ -149,7 +149,7 @@ class Base(object):
 
 class ObservationCollection(object):
     """ Create SSN-EXT Observation Collection """
-    def __init__(self, ):
+    def __init__(self, comment):
         self.jsonld={
             "@type": "ssn-ext:ObservationCollection",
             "hasFeatureOfInterest" : "http://example.org/Sample_2",
@@ -160,13 +160,20 @@ class ObservationCollection(object):
             "hasMember" : [ "http://example.org/O5", "http://example.org/O4" ]
         }
         self.obscollid = BNode()
+        self.comment = Literal(comment)
         obsgraph.add((self.obscollid, RDF.type, ssnext.ObservationCollection))
+        obsgraph.add((self.obscollid, RDFS.comment, self.comment ))
 
-
-    def addObservation(self):
+    def addObservation(self, sensorURI, FeatureURI, result):
         obsid = BNode()
-        obsgraph.add((obsid, RDF.type, ssnext.Observation))
+        resultTime = datetime.now(tz=None)
+        resultTimeLiteral = Literal(resultTime)
+        resultLiteral = Literal(result)
+        obsgraph.add((obsid, RDF.type, sosa.Observation))
+        obsgraph.add((obsid, sosa.madeBySensor, sensorURI))
         obsgraph.add((self.obscollid, ssnext.hasMember, obsid))
+        obsgraph.add((obsid, sosa.resultTime, resultTimeLiteral))
+        obsgraph.add((obsid, sosa.hasSimpleResult, resultLiteral))
 
 # str(uuid.uuid4())
 
@@ -175,13 +182,19 @@ class Observation(object):
         pass
 
 class Sensor(object):
-    def __init__(self):
-        pass
+    def __init__(self, sensorDescription, observablePropertyURI):
+        self.sensorid = BNode()
+        self.comment =  Literal(sensorDescription)
+        obsgraph.add((self.sensorid, RDF.type, sosa.Sensor))
+        obsgraph.add((self.sensorid, sosa.Observes, observablePropertyURI))
+        obsgraph.add((self.sensorid, RDFS.comment, self.comment))
 
+# Class for managing observableproperties
+# Preferably linked to envo, sweet and qudt
 class ObservableProperty:
-    def __init__(self):
-        pass
-
+    def __init__(self, observablePropertyURI):
+        self.observableProperty = observablePropertyURI
+        obsgraph.add((self.observablePropertyURI, rdf.type, sosa.ObservableProperty))
 class FeatureOfInterest(object):
     def __init__(self):
         self.uri = "_B0"
