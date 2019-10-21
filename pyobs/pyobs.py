@@ -137,6 +137,7 @@ rdf = Namespace("http://purl.org/dc/terms/")
 rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 ssn = Namespace("http://www.w3.org/ns/ssn/")
 
+
 def get_graph():
     return obsgraph
 
@@ -196,8 +197,13 @@ class ObservationCollection(object):
 # str(uuid.uuid4())
 
 class Observation(object):
-    def __init__(self):
-        pass
+    def __init__(self, comment, label):
+        self.comment = Literal(comment)
+        self.observation_id = BNode()
+        # Fix Tomorrow
+        # obsgraph.add((self.observation_id, sosa.madeBySensor, sensor_id))
+        # obsgraph.add((self.platform_id, RDFS.comment, self.comment))
+        # obsgraph.add((self.platform_id, RDFS.label, self.label))
 
 
 class Sensor(object):
@@ -238,7 +244,7 @@ class ObservableProperty(object):
 
 
 class FeatureOfInterest(object):
-"""   Creates a Feature of Interest object that represents a SOSA Feature of Interest """
+    """   Creates a Feature of Interest object that represents a SOSA Feature of Interest """
 
     def __init__(self):
         self.uri = "_B0"
