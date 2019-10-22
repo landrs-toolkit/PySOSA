@@ -25,6 +25,8 @@
     - Ingest Trajectory
     - Prov annotation of analysis
     (use Wfs3 endpoint plugin, requires our dev of tripplestore update from QGIS funcs)
+
+8. NEEMA_LD library
     
 # WG Tasks
 - Drone Data Product Levels
