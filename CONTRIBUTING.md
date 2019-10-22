@@ -1,6 +1,6 @@
 # Dummy Contributing: Hack2 Miniprojects proposals and wrapup disscussion:
 
-1.  1st pass implement PySOSA complete to point of Read in CO2.csv and ArdupilotFlightLog.csv 
+1.  1st pass implement PySOSA complete to point of Read in CO2.csv and ArdupilotFlightLog.csv and spit out HDT and text tripples
 
 2.  PySOSA - OpenAPI spec.  Demo with with Flask-DB&Leaflet //use PyGEOAPI
 
