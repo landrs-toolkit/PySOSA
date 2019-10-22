@@ -142,25 +142,25 @@ def get_graph():
     return obsgraph
 
 
-class platform(object):
+class System(object):
     """
-    Creates a Platform object that represents a SOSA Platform
+    Creates a System object that represents a SOSA System
 """
-    # Maybe remove list if makes object too big/not needed, or might want a func that returns this list
+    # Assume that we can add a sensor to the system
     sensors = []
 
     def __init__(self, comment, label):
-        self.platform_id = BNode()
+        self.system_id = BNode()
         self.label = Literal(label)
         self.comment = Literal(comment)
-        obsgraph.add((self.platform_id, RDF.type, sosa.Platform))
-        obsgraph.add((self.platform_id, RDFS.comment, self.comment))
-        obsgraph.add((self.platform_id, RDFS.label, self.label))
+        obsgraph.add((self.system_id, RDF.type, sosa.System)) # should we use sosa.system or ssn.system?
+        obsgraph.add((self.system_id, RDFS.comment, self.comment))
+        obsgraph.add((self.system_id, RDFS.label, self.label))
 
     def add_sensor(self, Sensor):
         a_uri = Sensor.get_uri()
         self.sensors.append(a_uri)
-        obsgraph.add((self.platform_id, sosa.hosts, a_uri))
+        obsgraph.add((self.syet_id, sosa.hosts, a_uri))
         Sensor.add_platform_id(self.platform_id)
 
 
