@@ -2,6 +2,8 @@
 
 A python module for use in annotating data using the [SOSA (Sensors, Observations, Samples, and Actuators)](https://www.w3.org/TR/vocab-ssn/#SOSASensor) ontology through the creation of RDF graphs.
 
+Hack Design diagram is [here](./PySOSADesign.png)
+
 ## Contributing
 This repo began at a hackathon during the Research Data Alliance 14th plenary in Helsink October 2019.  Student work to complete the module will **begin 18 November 2019** but is and always will be published openly under Apache 2.0.  PRs and issue submisstions are welcomed.
 
