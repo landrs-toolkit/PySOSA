@@ -1,8 +1,9 @@
 
 # LANDRS_PySOSA
 
-(./landrs-logo_lg.png)
+
 A python module for building SOSA  based RDF graphs
+[landrs](./landrs-logo_lg.png)
 
 LANDRS (Linked And Networked DRoneS) project amongst other things we’re working
 on creating an ontology and building an OpenAPI specification for creating a Restful API
