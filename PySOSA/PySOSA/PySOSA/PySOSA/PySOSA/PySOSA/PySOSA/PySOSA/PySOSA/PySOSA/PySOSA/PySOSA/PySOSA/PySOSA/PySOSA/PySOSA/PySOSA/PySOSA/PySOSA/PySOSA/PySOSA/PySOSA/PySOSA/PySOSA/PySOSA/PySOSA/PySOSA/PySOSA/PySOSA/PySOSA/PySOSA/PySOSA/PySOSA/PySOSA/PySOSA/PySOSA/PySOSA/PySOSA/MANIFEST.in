@@ -1,5 +1,0 @@
-include *.py
-include *.txt
-include *.md
-include *.png
-include setup.cfg
