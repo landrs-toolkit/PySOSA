@@ -1,10 +1,6 @@
-import pyobs_pyobs
+from PySOSA import pyobs
 
-import pyobs_pyobs
-
-
-import rdflib
-
+pyobs.platform()
 
 def test_Observation():
     obs = pyobs_pyobs.ObservationCollection(comment="mycol")
