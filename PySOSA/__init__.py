@@ -1,4 +1,19 @@
 """ The PySOSA module is used to build SOSA graphs """
-from . import pyobs #Is this the correct import?  Or should it be pyobs_another1/pyobsv2/etc?
+from . import *
 
-__all__ = ['pyobs']
+__all__ = ['ActuatableProperty',
+           'Actuation',
+           'Actuator',
+           'FeatureOfInterest',
+           'ObservableProperty',
+           'ObservableProperty',
+           'Observation',
+           'ObservationCollection',
+           'Platform',
+           'Procedure',
+           'PySOSA'
+           'Sampler',
+           'Sampling',
+           'Sensor',
+           'UltimateFeatureOfInterest',
+           ]
