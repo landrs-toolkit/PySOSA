@@ -16,7 +16,7 @@ use of web standards and linked data technologies.
 The project endeavors to implement PySOSA: A python module for building SOSA  based RDF graphs.
 Sensor, Observation, Sample, and Actuator (SOSA) ontology, provides a lightweight core for Semantic Sensor Network (SSN).
 SOSA aims at broadening the target audience and application areas that can make use of Semantic Web ontologies.
-To find out more about SOSA and SSN check out http://www.w3.org/ns/sosa/ and http://www.w3.org/ns/ssn/
+To find out more about SOSA and SSN check out https://www.w3.org/TR/vocab-ssn/#SOSAPlatform and http://www.w3.org/ns/ssn/
 
 # Getting started
 PySOSA is A python module for building RDF graphs using the W3C SOSA (Sensors, Observations, Samples,
