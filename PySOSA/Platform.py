@@ -19,10 +19,11 @@ class Platform(object):
     samplers = []
 
     #constructor
-    def __init__(self, comment, label):
+    # def __init__(self, comment, label):
+    def __init__(self, *args):
         self.platform_id = BNode()
-        self.label = Literal(label)
-        self.comment = Literal(comment)
+        self.label = Literal(args[1])
+        self.comment = Literal(args[0])
         obsgraph.add((self.platform_id, RDF.type, cfg.sosa.Platform))
         obsgraph.add((self.platform_id, RDFS.comment, self.comment))
         obsgraph.add((self.platform_id, RDFS.label, self.label))
