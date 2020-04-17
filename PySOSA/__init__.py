@@ -1,7 +1,8 @@
 """ The PySOSA module is used to build SOSA graphs """
 from . import *
 
-__all__ = ['ActuatableProperty',
+__all__ = ['config',
+            'ActuatableProperty',
            'Actuation',
            'Actuator',
            'FeatureOfInterest',

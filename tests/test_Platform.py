@@ -1,9 +1,9 @@
 import unittest
+from PySOSA import PySOSA
 from PySOSA.Platform import Platform
 from PySOSA.Sensor import Sensor
 from PySOSA.Sampler import Sampler
 from PySOSA.Actuator import Actuator
-from PySOSA import PySOSA
 
 class MyTestCase(unittest.TestCase):
 
