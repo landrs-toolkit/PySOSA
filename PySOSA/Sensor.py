@@ -4,10 +4,7 @@ from datetime import datetime
 from rdflib.term import Identifier
 
 # Add Graph obj
-obsgraph = Graph()
-
-def get_graph():
-    return obsgraph
+obsgraph = cfg.get_graph()
 
 class Sensor(object):
 
@@ -20,14 +17,20 @@ class Sensor(object):
     observations = []
 
     #constructor
-    def __init__(self, label,comment):
-        self.label = Literal(label)
-        self.comment = Literal(comment)
+    def __init__(self, *args):
         self.sensor_id = BNode()
-        self.obs_property = Literal
-        obsgraph.add((self.sensor_id, RDF.type, cfg.sosa.Sensor))
+        self.label = Literal(args[0])
+        self.comment = Literal(args[1])
+        self.observableProperty = (args[2])
+        self.procedure = (args[3])
+        obsgraph.add((self.sensor_id, RDF.type,  cfg.sosa.Sensor))
         obsgraph.add((self.sensor_id, RDFS.comment, self.comment))
         obsgraph.add((self.sensor_id, RDFS.label, self.label))
+        # add list of observable properties
+        for obs in self.observableProperty:
+            obsgraph.add((self.sensor_id,  cfg.sosa.observes, obs.label))
+        for pro in self.procedure:
+            obsgraph.add((self.sensor_id,  cfg.sosa.implements, pro.label))
 
     #set sensor id
     def set_sensor_id(self, sensor_id):
@@ -37,25 +40,26 @@ class Sensor(object):
     def get_uri(self):
         return self.sensor_id
 
-    #add observable property
+    #add  a single observable property
 
     def add_obs_property(self, ObservableProperty):
         a_uri = ObservableProperty.get_uri()
         obsgraph.add((self.sensor_id, cfg.sosa.observes, a_uri))
 
-    #add procedure
+    #add  a single procedure
     def add_procedure(self,Procedure):
         p_uri = Procedure.get_uri()
         obsgraph.add((self.sensor_id, cfg.sosa.implements, p_uri))
 
-    #define platfrom that hosts sensor
-    def add_platform(self,Platform):
-        pl_uri = Platform.get_uri()
-        obsgraph.add((self.sensor_id, cfg.sosa.isHostedBy, pl_uri))
+        # define observation
 
-    #define observation
-    def add_observation(self,Observation):
-        o_uri=Observation.get_uri()
+    def add_observation(self, Observation):
+        o_uri = Observation.get_uri()
         obsgraph.add((self.sensor_id, cfg.sosa.madeObservation, o_uri))
         self.observations.append(Observation)
+
+        # return list of observations
+
+    def get_observation_list(self):
+        return self.observations
 
