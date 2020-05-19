@@ -1,4 +1,5 @@
 from rdflib import Namespace
+from rdflib import Graph, URIRef, BNode, Literal, RDF, RDFS
 
 #Ontology namespaces
 ssnext = Namespace("http://www.w3.org/ns/ssn/ext/")
@@ -105,3 +106,10 @@ context = {
     "numericValue": "http://qudt.org/schema/qudt#numericValue",
     "unit": "http://qudt.org/schema/qudt#unit"
 }
+
+# Add Graph obj
+obsgraph = Graph()
+
+#return Graph
+def get_graph():
+    return obsgraph
