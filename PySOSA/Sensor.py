@@ -2,6 +2,9 @@ from PySOSA import config as cfg
 from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
 from datetime import datetime
 from rdflib.term import Identifier
+from PySOSA.ObservableProperty import ObservableProperty
+from PySOSA.Procedure import Procedure
+from PySOSA.Observation import Observation
 
 # Add Graph obj
 obsgraph = cfg.get_graph()
@@ -15,8 +18,9 @@ class Sensor(object):
     """
 
     observations = []
+    observableProps =[]
 
-    #constructor
+    #constructor parameters- label,comment, list of observable properties and list of procedures
     def __init__(self, *args):
         self.sensor_id = BNode()
         self.label = Literal(args[0])
@@ -28,9 +32,11 @@ class Sensor(object):
         obsgraph.add((self.sensor_id, RDFS.label, self.label))
         # add list of observable properties
         for obs in self.observableProperty:
-            obsgraph.add((self.sensor_id,  cfg.sosa.observes, obs.label))
+            if isinstance(obs, ObservableProperty):
+                obsgraph.add((self.sensor_id,  cfg.sosa.observes, obs.label))
         for pro in self.procedure:
-            obsgraph.add((self.sensor_id,  cfg.sosa.implements, pro.label))
+            if isinstance(pro, Procedure):
+                obsgraph.add((self.sensor_id,  cfg.sosa.implements, pro.label))
 
     #set sensor id
     def set_sensor_id(self, sensor_id):
@@ -42,21 +48,24 @@ class Sensor(object):
 
     #add  a single observable property
 
-    def add_obs_property(self, ObservableProperty):
-        a_uri = ObservableProperty.get_uri()
-        obsgraph.add((self.sensor_id, cfg.sosa.observes, a_uri))
+    def add_obs_property(self, obsProp):
+        if isinstance(obsProp, ObservableProperty):
+            a_uri = obsProp.get_uri()
+            obsgraph.add((self.sensor_id, cfg.sosa.observes,obsProp.label ))
 
     #add  a single procedure
-    def add_procedure(self,Procedure):
-        p_uri = Procedure.get_uri()
-        obsgraph.add((self.sensor_id, cfg.sosa.implements, p_uri))
+    def add_procedure(self,proc):
+        if isinstance(proc, Procedure):
+            p_uri = proc.get_uri()
+            obsgraph.add((self.sensor_id, cfg.sosa.implements, proc.label))
 
-        # define observation
+    #add observation
 
-    def add_observation(self, Observation):
-        o_uri = Observation.get_uri()
-        obsgraph.add((self.sensor_id, cfg.sosa.madeObservation, o_uri))
-        self.observations.append(Observation)
+    def add_observation(self, obs):
+        if isinstance(obs, Observation):
+            o_uri = obs.get_uri()
+            obsgraph.add((self.sensor_id, cfg.sosa.madeObservation, obs.label))
+            self.observations.append(Observation)
 
         # return list of observations
 

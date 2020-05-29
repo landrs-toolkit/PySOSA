@@ -9,8 +9,6 @@ from PySOSA.Sampler import Sampler
 # Add Graph obj
 obsgraph = cfg.get_graph()
 
-
-
 class Platform(object):
     """
     Creates a Platform object that represents a SOSA Platform
@@ -26,9 +24,9 @@ class Platform(object):
         self.platform_id = BNode()
         self.label = Literal(args[1])
         self.comment = Literal(args[0])
-        self.sensorList = args[2][0]#lists of sensors
-        self.actuatorList = args[2][1]#lists of actuators
-        self.samplerList = args[2][2]#lists of samplers
+        self.sensorList = args[2]#lists of sensors
+        self.actuatorList = args[3]#lists of actuators
+        self.samplerList = args[4]#lists of samplers
         obsgraph.add((self.platform_id, RDF.type, cfg.sosa.Platform))
         obsgraph.add((self.platform_id, RDFS.comment, self.comment))
         obsgraph.add((self.platform_id, RDFS.label, self.label))
@@ -67,7 +65,6 @@ class Platform(object):
 
         # check if it is a sensor before adding
         if isinstance(sensor, Sensor):
-            sen_uri = sensor.get_uri()
             # add sensor to list
             self.sensors.append(sensor)
             # add sensor to rdf graph
