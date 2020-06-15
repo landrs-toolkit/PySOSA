@@ -18,15 +18,16 @@ class Sensor(object):
     """
 
     observations = []
-    observableProps =[]
+    observableProps = []
 
     #constructor parameters- label,comment, list of observable properties and list of procedures
     def __init__(self, *args):
         self.sensor_id = BNode()
+        self.platform_id = BNode()
         self.label = Literal(args[0])
         self.comment = Literal(args[1])
-        self.observableProperty = (args[2])
-        self.procedure = (args[3])
+        self.observableProperty = args[2]
+        self.implements_procedure = (args[3])
         obsgraph.add((self.sensor_id, RDF.type,  cfg.sosa.Sensor))
         obsgraph.add((self.sensor_id, RDFS.comment, self.comment))
         obsgraph.add((self.sensor_id, RDFS.label, self.label))
@@ -34,7 +35,7 @@ class Sensor(object):
         for obs in self.observableProperty:
             if isinstance(obs, ObservableProperty):
                 obsgraph.add((self.sensor_id,  cfg.sosa.observes, obs.label))
-        for pro in self.procedure:
+        for pro in self.implements_procedure:
             if isinstance(pro, Procedure):
                 obsgraph.add((self.sensor_id,  cfg.sosa.implements, pro.label))
 
@@ -47,7 +48,6 @@ class Sensor(object):
         return self.sensor_id
 
     #add  a single observable property
-
     def add_obs_property(self, obsProp):
         if isinstance(obsProp, ObservableProperty):
             a_uri = obsProp.get_uri()

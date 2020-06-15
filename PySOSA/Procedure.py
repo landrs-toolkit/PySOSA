@@ -21,11 +21,11 @@ class Procedure(object):
         self.input = BNode()
         self.output = BNode()
 
-        obsgraph.add((self.procedure_id, RDF.type, sosa.Procedure))
+        obsgraph.add((self.procedure_id, RDF.type, cfg.sosa.Procedure))
         obsgraph.add((self.procedure_id, RDFS.comment, self.comment))
         obsgraph.add((self.procedure_id, RDFS.label, self.label))
-        obsgraph.add((self.procedure_id, sosa.hasInput, self.input))
-        obsgraph.add((self.procedure_id, sosa.hasOutput, self.output))
+        obsgraph.add((self.procedure_id, cfg.sosa.hasInput, self.input))
+        obsgraph.add((self.procedure_id, cfg.sosa.hasOutput, self.output))
 
     #set procedure id
     def set_procedure_id(self, procedure_id):

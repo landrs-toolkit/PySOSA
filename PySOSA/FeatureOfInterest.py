@@ -11,6 +11,7 @@ def get_graph():
 
 class FeatureOfInterest(object):
     """
+    Creates a feature of interest object representing SOSA FOI
     The thing whose property is being estimated or calculated in the course of an Observation
     to arrive at a Result, or whose property is being manipulated by an Actuator,
     or which is being sampled or transformed in an act of Sampling.

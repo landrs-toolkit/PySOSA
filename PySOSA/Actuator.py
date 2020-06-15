@@ -22,10 +22,11 @@ class Actuator(object):
     #constructor parameters- label,comment, list of actuatable properties,list of procedures
     def __init__(self, *args):
         self.actuator_id = BNode()
+        self.platform_id = BNode()
         self.label = Literal(args[0])
         self.comment = Literal(args[1])
         self.actuatableProperty = (args[2])
-        self.procedure = (args[3])
+        self.procedure = Literal(args[3])
 
         obsgraph.add((self.actuator_id, RDF.type, cfg.sosa.Actuator))
         obsgraph.add((self.actuator_id, RDFS.comment, self.comment))

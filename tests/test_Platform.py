@@ -37,7 +37,7 @@ class MyTestCase(unittest.TestCase):
         #list of sensors
         senList = [s1,s2]
         # platform object
-        p1 = Platform("platform 1", "p1",senList,actList,[])
+        p1 = Platform("platform 1", "p1", senList, actList,[])
         p1.add_sensor(s3)
 
         this_graph = cfg.get_graph()

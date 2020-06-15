@@ -12,7 +12,7 @@ obsgraph = cfg.get_graph()
 class Platform(object):
     """
     Creates a Platform object that represents a SOSA Platform
-"""
+    """
     # Maybe remove list if makes object too big/not needed, or might want a func that returns this list
     sensors = []
     actuators = []
@@ -22,22 +22,25 @@ class Platform(object):
     # def __init__(self, comment, label):
     def __init__(self, *args):
         self.platform_id = BNode()
-        self.label = Literal(args[1])
-        self.comment = Literal(args[0])
-        self.sensorList = args[2]#lists of sensors
-        self.actuatorList = args[3]#lists of actuators
-        self.samplerList = args[4]#lists of samplers
+        self.label = Literal(args[0])
+        self.comment = Literal(args[1])
+        self.sensorList = args[2] #lists of sensors
+        self.actuatorList = args[3] #lists of actuators
+        self.samplerList = args[4] #lists of samplers
         obsgraph.add((self.platform_id, RDF.type, cfg.sosa.Platform))
         obsgraph.add((self.platform_id, RDFS.comment, self.comment))
         obsgraph.add((self.platform_id, RDFS.label, self.label))
         #add sensors
         for sen in self.sensorList:
-
             if isinstance(sen, Sensor):
-                # add to list of sensors
-                self.sensors.append(sen)
-                #add to graph
-                obsgraph.add((self.platform_id, cfg.sosa.hosts, sen.label))
+                # check if sensorList is not empty
+                # if len(self.get_sensors_list() != 0):
+                    # add to list of sensors
+                    self.sensors.append(sen)
+                    #add to graph
+                    obsgraph.add((self.platform_id, cfg.sosa.hosts, sen.label))
+                # else:
+                #     raise Exception("Cannot add empty sensor! ")
 
         #add actuators
         for act in self.actuatorList:
@@ -62,14 +65,12 @@ class Platform(object):
 
         # Add a single sensor to platform
     def add_sensor(self, sensor):
-
         # check if it is a sensor before adding
         if isinstance(sensor, Sensor):
             # add sensor to list
             self.sensors.append(sensor)
             # add sensor to rdf graph
             obsgraph.add((self.platform_id, cfg.sosa.hosts, sensor.label))
-
         else:
             raise Exception('Type error: object not of type Sensor')
 

@@ -1,4 +1,3 @@
-
 """Python module for instantiating and serializing W3C/OGC SSN-EXT Observation Collection.
 This module provides utility class objects for maintaining a Observation Collection and the ability to serialize the collections as JSON-LD.
 Todo:
@@ -16,9 +15,9 @@ from rdflib import Graph, BNode, Literal, Namespace, RDF, RDFS
 #  QUDT https://github.com/opengeospatial/SELFIE/blob/master/docs/contexts/qudt.jsonld
 # datetime.datetime.now(pytz.timezone('Europe/Paris')).isoformat()
 # UUID str(uuid.uuid4())
-# https://github.com/w3c/sdw/blob/gh-pages/proposals/ssn-extensions/rdf/ssn-ext.jsonld 
+# https://github.com/w3c/sdw/blob/gh-pages/proposals/ssn-extensions/rdf/ssn-ext.jsonld
 
-# For images that are observations IIF 
+# For images that are observations IIF
 # https://github.com/zimeon/iiif-ld-demo
 
 # Add Graph obj
@@ -361,3 +360,5 @@ class FeatureOfInterest(object):
 class UltimateFeatureOfInterest(FeatureOfInterest):
     def __init__(self):
         super(UltimateFeatureOfInterest, self).__init__()
+
+
