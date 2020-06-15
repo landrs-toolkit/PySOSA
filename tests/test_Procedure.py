@@ -13,9 +13,10 @@ class MyTestCase(unittest.TestCase):
 
     #Test adding observable property to sensor
 
-    def test_add_observable_property(self):
-        proc1 = Procedure("procedure 1", "proc1")
-        proc2 = Procedure("procedure 2", "proc2")
+    def test_set_procedure_id(self):
+        procedure_id = "UND2020"
+        proc1 = Procedure("procedure 1", "proc1", "Sensor calibration proc", "procedureInput", "procedureOutput")
+        proc2 = Procedure("procedure 2", "proc2", "Sensor calibration proc", "procedureInput", "procedureOutput")
         # list of procedures
         proList = [proc1, proc2]
         # observable property object

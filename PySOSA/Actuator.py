@@ -1,115 +1,13 @@
+from PySOSA import config as cfg
 from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
 from datetime import datetime
 from rdflib.term import Identifier
-
-context = {
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "ssn-ext-examples": "http://example.org/ssn-ext-examples#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "time": "http://www.w3.org/2006/time#",
-    "ssn-ext": "http://www.w3.org/ns/ssn/ext/",
-    "sosa": "http://www.w3.org/ns/sosa/",
-    "qudt": "http://qudt.org/1.1/schema/qudt#",
-    "prov": "http://www.w3.org/ns/prov#",
-
-    "hasUltimateFeatureOfInterest": {
-        "@id": "http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest",
-        "@type": "@id"
-    },
-    "usedProcedure": {
-        "@id": "http://www.w3.org/ns/sosa/usedProcedure",
-        "@type": "@id"
-    },
-    "phenomenonTime": {
-        "@id": "http://www.w3.org/ns/sosa/phenomenonTime",
-        "@type": "@id"
-    },
-    "observedProperty": {
-        "@id": "http://www.w3.org/ns/sosa/observedProperty",
-        "@type": "@id"
-    },
-    "madeBySensor": {
-        "@id": "http://www.w3.org/ns/sosa/madeBySensor",
-        "@type": "@id"
-    },
-    "hasFeatureOfInterest": {
-        "@id": "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
-        "@type": "@id"
-    },
-    "hasMember": {
-        "@id": "http://www.w3.org/ns/ssn/ext/hasMember",
-        "@type": "@id"
-    },
-    "inXSDDateTime": {
-        "@id": "http://www.w3.org/2006/time#inXSDDateTime",
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "hasBeginning": {
-        "@id": "http://www.w3.org/2006/time#hasBeginning",
-        "@type": "@id"
-    },
-    "isSampleOf": {
-        "@id": "http://www.w3.org/ns/sosa/isSampleOf",
-        "@type": "@id"
-    },
-    "hasResult": {
-        "@id": "http://www.w3.org/ns/sosa/hasResult",
-        "@type": "@id"
-    },
-    "imports": {
-        "@id": "http://www.w3.org/2002/07/owl#imports",
-        "@type": "@id"
-    },
-    "comment": {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#comment"
-    },
-    "creator": {
-        "@id": "http://purl.org/dc/terms/creator",
-        "@type": "@id"
-    },
-    "created": {
-        "@id": "http://purl.org/dc/terms/created",
-        "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "resultTime": {
-        "@id": "http://www.w3.org/ns/sosa/resultTime",
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-
-    "ObservationCollection": "ssn-ext:ObservationCollection",
-    "hasMember": "ssn-ext:hasMember",
-    "isMemberOf": "ssn-ext:isMemberOf",
-    "Observation": "sosa:Observation",
-    "Sample": "sosa:Sample",
-    "observedProperty": "sosa:observedProperty",
-    "hasBeginning": "time:hasBeginning",
-    "hasEnd": "time:hasEnd",
-    "hasGeometry": "gsp:hasGeometry",
-    "isSampleOf": "sosa:isSampleOf",
-    "isFeatureOfInterestOf": "sosa:isFeatureOfInterestOf",
-    "relatedSample": "sampling:relatedSample",
-    "quantityValue": "http://qudt.org/schema/qudt#quantityValue",
-    "numericValue": "http://qudt.org/schema/qudt#numericValue",
-    "unit": "http://qudt.org/schema/qudt#unit"
-}
+from PySOSA.ActuatableProperty import ActuatableProperty
+from PySOSA.Procedure import Procedure
+from PySOSA.Actuation import Actuation
 
 # Add Graph obj
-obsgraph = Graph()
-
-# Add namespaces
-ssnext = Namespace("http://www.w3.org/ns/ssn/ext/")
-sosa = Namespace("http://www.w3.org/ns/sosa/")
-prov = Namespace("http://www.w3.org/ns/prov#")
-qudt = Namespace("http://qudt.org/1.1/schema/qudt#")
-owltime = Namespace("ttp://www.w3.org/2006/time#")
-owl = Namespace("http://www.w3.org/2002/07/owl#")
-rdf = Namespace("http://purl.org/dc/terms/")
-rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
-ssn = Namespace("http://www.w3.org/ns/ssn/")
-
+obsgraph = cfg.get_graph()
 
 def get_graph():
     return obsgraph
@@ -121,32 +19,47 @@ class Actuator(object):
     """
     actuations = []
 
-    def __init__(self,label,comment):
+    #constructor parameters- label,comment, list of actuatable properties,list of procedures
+    def __init__(self, *args):
         self.actuator_id = BNode()
-        self.label = Literal(label)
-        self.comment = Literal(comment)
-        self.actuatableProperty = Literal
+        self.platform_id = BNode()
+        self.label = Literal(args[0])
+        self.comment = Literal(args[1])
+        self.actuatableProperty = (args[2])
+        self.procedure = Literal(args[3])
 
-        obsgraph.add((self.actuator_id, RDF.type, sosa.Actuator))
+        obsgraph.add((self.actuator_id, RDF.type, cfg.sosa.Actuator))
         obsgraph.add((self.actuator_id, RDFS.comment, self.comment))
         obsgraph.add((self.actuator_id, RDFS.label, self.label))
+        # add list of actuatable properties
+        for act in self.actuatableProperty:
+            if isinstance(act, ActuatableProperty):
+                obsgraph.add((self.actuator_id, cfg.sosa.observes, act.label))
+        # add list of procedures
+        for pro in self.procedure:
+            if isinstance(pro, Procedure):
+                obsgraph.add((self.sensor_id, cfg.sosa.implements, pro.label))
 
     def get_uri(self):
         return self.actuator_id
 
     def set_actuator_id(self, actuator_id):
         self.actuator_id = actuator_id
-    #add procedure
-    def add_procedure(self, Procedure):
-        p_uri = Procedure.get_uri()
-        obsgraph.add((self.actuator_id, sosa.implements, p_uri))
-    #add actuableProperty
-    def add_actuatableProperty(self, ActuatableProperty):
-        a_uri = ActuatableProperty.get_uri()
-        obsgraph.add((self.actuator_id, sosa.actsOnProperty, a_uri))
+
+    #add a single procedure
+    def add_procedure(self, pro):
+        if isinstance(pro, Procedure):
+            obsgraph.add((self.actuator_id, cfg.sosa.observes, pro.label))
+
+    #add a single  actuableProperty
+    def add_actuatableProperty(self, actProp):
+        if isinstance(actProp, ActuatableProperty):
+            obsgraph.add((self.actuator_id, cfg.sosa.observes, actProp.label))
+
     #add actuation
-    def add_actuation(self, Actuation):
-        a_uri = Actuation.get_uri()
-        obsgraph.add((self.actuator_id, sosa.madeActuation, a_uri))
-        self.actuations.append(a_uri)
+    def add_actuation(self, actuation):
+        a_uri = actuation.get_uri()
+        if isinstance(actuation, Actuation):
+            obsgraph.add((self.actuator_id, cfg.sosa.madeActuation, a_uri))
+            self.actuations.append(a_uri)
 
