@@ -1,7 +1,6 @@
+from rdflib import Graph, BNode, Literal, RDF, RDFS
+
 from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
 
 # Add Graph obj
 obsgraph = Graph()
@@ -11,7 +10,9 @@ def get_graph():
 
 class Procedure(object):
     """
-    Creates a Procedure object
+    Creates a Procedure object representing a SOSA procedure
+    Procedure - A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation,
+    create a Sample, or make a change to the state of the world (via an Actuator).
     """
 
     def __init__(self, comment, label):

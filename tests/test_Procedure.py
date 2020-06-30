@@ -1,17 +1,13 @@
 import unittest
-from PySOSA import config as cfg
-from PySOSA import PySOSA
-from PySOSA.Platform import Platform
-from PySOSA.Sensor import Sensor
-from PySOSA.Sampler import Sampler
-from PySOSA.Actuator import Actuator
-from PySOSA.Procedure import Procedure
+
 from PySOSA.ObservableProperty import ObservableProperty
-from PySOSA.Observation import Observation
+from PySOSA.Procedure import Procedure
+from PySOSA.Sensor import Sensor
+
 
 class MyTestCase(unittest.TestCase):
 
-    #Test adding observable property to sensor
+    #Test setting procedure_id to sensor
 
     def test_set_procedure_id(self):
         procedure_id = "UND2020"
@@ -49,13 +45,4 @@ class MyTestCase(unittest.TestCase):
         #add procedure
         s5.add_procedure(proc3)
 
-    # test to add observation to  sensor
-    def test_add_observation(self):
-        s6 = Sensor("Sensor 6", "sixth sensor", [], [])
-        obs1 = Observation("Observation 1", "measuring temperature")
-        s6.add_observation(obs1)
 
-
-        this_graph = cfg.get_graph()
-        # print(this_graph.serialize(format='turtle'))
-        print(this_graph.serialize(format="ttl").decode('utf-8'))

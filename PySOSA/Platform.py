@@ -1,10 +1,9 @@
+from rdflib import BNode, Literal, RDF, RDFS
+
 from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
-from PySOSA.Sensor import Sensor
 from PySOSA.Actuator import Actuator
 from PySOSA.Sampler import Sampler
+from PySOSA.Sensor import Sensor
 
 # Add Graph obj
 obsgraph = cfg.get_graph()
@@ -12,6 +11,7 @@ obsgraph = cfg.get_graph()
 class Platform(object):
     """
     Creates a Platform object that represents a SOSA Platform
+    A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms.
     """
     # Maybe remove list if makes object too big/not needed, or might want a func that returns this list
     sensors = []

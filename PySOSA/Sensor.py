@@ -1,10 +1,8 @@
+from rdflib import BNode, Literal, RDF, RDFS
 from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
 from PySOSA.ObservableProperty import ObservableProperty
-from PySOSA.Procedure import Procedure
 from PySOSA.Observation import Observation
+from PySOSA.Procedure import Procedure
 
 # Add Graph obj
 obsgraph = cfg.get_graph()
@@ -12,6 +10,7 @@ obsgraph = cfg.get_graph()
 class Sensor(object):
 
     """
+    Creates a Sensor object representing a SOSA sensor
     Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure.
     Sensors respond to a Stimulus, e.g., a change in the environment, or Input data composed
     from the Results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.

@@ -1,7 +1,6 @@
+from rdflib import Graph, BNode, Literal, RDF, RDFS
+
 from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
 
 # Add Graph obj
 obsgraph = Graph()
@@ -14,6 +13,7 @@ def get_graph():
 class ObservableProperty(object):
     """
     Creates a Observable Property object that represents a SOSA Observable Property
+    Observable Property - An observable quality (property, characteristic) of a FeatureOfInterest.
 
     """
 

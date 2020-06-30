@@ -1,7 +1,4 @@
-from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
+from rdflib import Graph, BNode, Literal, RDF, RDFS
 
 # Add Graph obj
 obsgraph = Graph()
@@ -11,6 +8,7 @@ def get_graph():
 
 class ActuatableProperty(object):
     """
+    Creating an Actuatable Property object that represents a SOSA Actuable Property
     An actuatable quality (property, characteristic) of a FeatureOfInterest.
     """
 

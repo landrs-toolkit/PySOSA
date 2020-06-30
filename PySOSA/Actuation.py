@@ -1,7 +1,8 @@
-from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
 from datetime import datetime
-from rdflib.term import Identifier
+
+from rdflib import Graph, BNode, Literal, RDF, RDFS
+
+from PySOSA import config as cfg
 
 # Add Graph obj
 obsgraph = Graph()
@@ -16,6 +17,7 @@ class Actuation(object):
 
     def __init__(self,label,comment):
         self.actuation_id = BNode()
+        self.featureOfInterest = Literal
         self.label = Literal(label)
         self.comment = Literal(comment)
         self.dateTime = Literal(datetime)
@@ -25,7 +27,7 @@ class Actuation(object):
         obsgraph.add((self.actuation_id, RDFS.comment, self.comment))
         obsgraph.add((self.actuation_id, RDFS.label, self.label))
         obsgraph.add((self.actuation_id, cfg.sosa.datetime, self.dateTime))
-        #obsgraph.add((self.actuation_id, cfg.sosa.hasSimpleResult, self.simpleResult))
+
 
     #get actuation id
     def get_uri(self):

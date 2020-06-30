@@ -1,10 +1,9 @@
+from rdflib import BNode, Literal, RDF, RDFS
+
 from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
 from PySOSA.ActuatableProperty import ActuatableProperty
-from PySOSA.Procedure import Procedure
 from PySOSA.Actuation import Actuation
+from PySOSA.Procedure import Procedure
 
 # Add Graph obj
 obsgraph = cfg.get_graph()
@@ -14,8 +13,8 @@ def get_graph():
 
 class Actuator(object):
     """
+     Creates an Actuator object representing a SOSA Actuator
      A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world.
-
     """
     actuations = []
 
