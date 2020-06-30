@@ -1,12 +1,12 @@
 import unittest
+
 from PySOSA import config as cfg
-from PySOSA import PySOSA
-from PySOSA.Platform import Platform
-from PySOSA.Sensor import Sensor
-from PySOSA.Sampler import Sampler
 from PySOSA.Actuator import Actuator
-from PySOSA.Procedure import Procedure
 from PySOSA.ObservableProperty import ObservableProperty
+from PySOSA.Platform import Platform
+from PySOSA.Procedure import Procedure
+from PySOSA.Sensor import Sensor
+
 
 class MyTestCase(unittest.TestCase):
 

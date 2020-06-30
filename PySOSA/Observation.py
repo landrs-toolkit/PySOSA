@@ -1,7 +1,8 @@
-from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
 from datetime import datetime
-from rdflib.term import Identifier
+
+from rdflib import Graph, BNode, Literal, RDF, RDFS
+
+from PySOSA import config as cfg
 
 # Add Graph obj
 obsgraph = Graph()
@@ -16,20 +17,20 @@ class Observation(object):
     Links to a Sensor to describe what made the Observation and how;
     """
 
-    def __init__(self, *args):
-        self.observation_id = BNode()
-        self.dateTime = Literal(datetime)
-        self.feature_of_interest = Literal(args[0])
-        self.comment = Literal(args[1])
-        self.label = Literal(args[2])
-        self.simpleResult = Literal(args[3])
-    # def __init__(self, label, comment):
+    # def __init__(self, *args):
     #     self.observation_id = BNode()
     #     self.dateTime = Literal(datetime)
-    #     self.featureOfInterest = Literal
-    #     self.comment = Literal(comment)
-    #     self.label = Literal(label)
-    #     self.simpleResult = Literal
+    #     self.feature_of_interest = Literal(args[0])
+    #     self.comment = Literal(args[1])
+    #     self.label = Literal(args[2])
+    #     self.simpleResult = Literal(args[3])
+    def __init__(self, label, comment):
+        self.observation_id = BNode()
+        self.dateTime = Literal(datetime)
+        self.featureOfInterest = Literal
+        self.comment = Literal(comment)
+        self.label = Literal(label)
+        self.simpleResult = Literal
 
         obsgraph.add((self.observation_id, RDF.type , cfg.sosa.Observation))
         obsgraph.add((self.observation_id, RDFS.comment, self.comment))

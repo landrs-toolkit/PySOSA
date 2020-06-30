@@ -1,7 +1,4 @@
-from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from datetime import datetime
-from rdflib.term import Identifier
+from rdflib import Graph, BNode, Literal, RDF, RDFS
 
 # Add Graph obj
 obsgraph = Graph()

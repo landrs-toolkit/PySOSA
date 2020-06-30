@@ -1,7 +1,8 @@
-from PySOSA import config as cfg
-from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
 from datetime import datetime
-from rdflib.term import Identifier
+
+from rdflib import Graph, BNode, Literal, RDF, RDFS
+
+from PySOSA import config as cfg
 
 # Add Graph obj
 obsgraph = Graph()
@@ -11,6 +12,7 @@ def get_graph():
 
 class Sampling(object):
     """
+     Creates a sampling object representing a SOSA sampling
      An act of Sampling carries out a (Sampling) Procedure to create or transform one or more Samples.
     """
 
