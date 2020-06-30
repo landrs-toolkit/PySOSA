@@ -56,3 +56,9 @@ class Sampler(object):
 
     def get_uri(self):
         return self.sampler_id
+
+    def add_observation(self, obs):
+        if isinstance(obs, Sampler):
+            o_uri = obs.get_uri()
+            obsgraph.add((self.sampler_id, cfg.sosa.madeObservation, obs.label))
+            self.samplings.append(Sampler)
