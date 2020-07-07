@@ -107,7 +107,6 @@ See instructions on how you can contribute on this guide: https://github.com/lan
     
     
 
-
 # Issues
 Navigate the git repo to find active issues. Some of the known issues include:
 - Order of sensors and platform on the graph output to be fixed 
