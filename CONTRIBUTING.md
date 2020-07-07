@@ -17,19 +17,20 @@ See a summary of instructions to guide how you can contribute.
 # Example of contributing to the LANDRS PySOSA project
 
 Step 1. Set up a working copy of the pysosa project on your computer
-    *        $ git clone https://github.com/landrs-toolkit/PySOSA.git
+
+        $ git clone https://github.com/landrs-toolkit/PySOSA.git
              
-         Then change into the new project repository
+   Then change into the new project repository
              
-             $ cd <some_path>/PySOSA
+         $ cd <some_path>/PySOSA
          
-         Set up a new remote that points to the original project so that you can grab any changes and bring them into your local copy.
-     *       $ git remote add upstream https://github.com/landrs-toolkit/PySOSA.git
+   Set up a new remote that points to the original project so that you can grab any changes and bring them into your local copy.
+
+          $ git remote add upstream https://github.com/landrs-toolkit/PySOSA.git
  
 
 Step 2. Get it working on your machine. 
-    Now that you have the source code, get it working on your computer. There is documentation on how to do this
-    in the README file. 
+    Now that you have the source code, get it working on your computer. There is documentation on how to do this in the README file. 
 
 Step 3. Do some work
     
@@ -59,6 +60,7 @@ To push a new branch:
 This will create the branch on your GitHub project. The -u flag links this branch with the remote one, so that in the future, you can simply type git push origin.
 
 Open a Pull Request
+
     Click compare and pull request button to open the PR. Click the link which will take you to the project’s CONTRIBUTING file and read it! It contains valuable information on how to work with the project’s code base and will help you get your contribution accepted.
 
 Step 5. Review by the maintainers
