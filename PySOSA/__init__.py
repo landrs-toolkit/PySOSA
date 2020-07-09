@@ -2,7 +2,7 @@
 from . import *
 
 __all__ = ['config',
-            'ActuatableProperty',
+           'ActuatableProperty',
            'Actuation',
            'Actuator',
            'FeatureOfInterest',
@@ -12,9 +12,7 @@ __all__ = ['config',
            'ObservationCollection',
            'Platform',
            'Procedure',
-           'PySOSA'
            'Sampler',
            'Sampling',
            'Sensor',
-           'UltimateFeatureOfInterest',
            ]

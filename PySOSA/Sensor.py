@@ -19,8 +19,14 @@ class Sensor(object):
     observations = []
     observableProps = []
 
-    #constructor parameters- label,comment, list of observable properties and list of procedures
     def __init__(self, *args):
+        """ instantiating Sensor object
+           Args:
+               *args (str): label, comment, observable property, implementsPrdocedure
+               sensor object can be instantiated with multiple arguments
+           Returns:
+               sensor object: an instantiated sensor object with sensor id, label,comment and other properties
+        """
         self.sensor_id = BNode()
         self.platform_id = BNode()
         self.label = Literal(args[0])
@@ -38,29 +44,53 @@ class Sensor(object):
             if isinstance(pro, Procedure):
                 obsgraph.add((self.sensor_id,  cfg.sosa.implements, pro.label))
 
-    #set sensor id
+
     def set_sensor_id(self, sensor_id):
+        """ setting a sensor id
+           Args:
+               sensor_id (str): the id to uniquely identify the sensor
+           Returns:
+               sensor object: with a set sensor id
+        """
         self.sensor_id = sensor_id
 
-    #get sensor id
+
     def get_uri(self):
+        """
+        get sensor id
+        """
         return self.sensor_id
 
-    #add  a single observable property
     def add_obs_property(self, obsProp):
+        """ add sensor's observable property
+           Args:
+               obsProp (str): the observable property to be added
+           Returns:
+               sensor object: with an observable property
+        """
         if isinstance(obsProp, ObservableProperty):
             a_uri = obsProp.get_uri()
             obsgraph.add((self.sensor_id, cfg.sosa.observes,obsProp.label ))
 
-    #add  a single procedure
     def add_procedure(self,proc):
+        """ add procedure
+           Args:
+               *proc (str): the procedure to be added
+           Returns:
+               sensor object: adds the procdure to the sensor and to the obsgraph
+        """
         if isinstance(proc, Procedure):
             p_uri = proc.get_uri()
             obsgraph.add((self.sensor_id, cfg.sosa.implements, proc.label))
 
-    #add observation
 
     def add_observation(self, obs):
+        """ add an observation to the sensor object
+               Args:
+                   *obs (str): the observation to be performed and added to the obsgraph
+               Returns:
+                   sensor object: with an observation or list of observations
+        """
         if isinstance(obs, Observation):
             o_uri = obs.get_uri()
             obsgraph.add((self.sensor_id, cfg.sosa.madeObservation, obs.label))
@@ -69,5 +99,8 @@ class Sensor(object):
         # return list of observations
 
     def get_observation_list(self):
+        """ get observations list
+        returns a list of observations
+        """
         return self.observations
 

@@ -14,6 +14,12 @@ class ObservationCollection(object):
     """ Create SSN-EXT Observation Collection """
 
     def __init__(self, comment):
+        """ instantiating Observation Collection
+             Args:
+                 label, comment (literal): label and comment for the observation collection
+             Returns:
+                 an observation collection: a collection of all observations performed
+          """
         self.jsonld = {
             "@type": "ssn-ext:ObservationCollection",
             "hasFeatureOfInterest": "http://example.org/Sample_2",
@@ -29,6 +35,12 @@ class ObservationCollection(object):
         obsgraph.add((self.obscollid, RDFS.comment, self.comment))
 
     def addObservation(self, sensorURI, FeatureURI, result):
+        """ add Observation
+             Args:
+                sensorURI, FeatureURI, result (str): uri of the sensor, feature of the obsCollection and result
+             Returns:
+                 observation collection: initialized with obs_id, sensorURI, FeatureURI, result
+        """
         obsid = BNode()
         resultTime = datetime.now(tz=None)
         resultTimeLiteral = Literal(resultTime)

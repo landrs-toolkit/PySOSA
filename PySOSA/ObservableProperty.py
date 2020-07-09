@@ -18,6 +18,12 @@ class ObservableProperty(object):
     """
 
     def __init__(self,label,comment):
+        """ instantiating Observable Property
+          Args:
+              label, comment (literal): label and comment for the observable property
+          Returns:
+              observable property: initialized with property_id, label and comment
+       """
         self.property_id = BNode()
         self.label = Literal(label)
         self.comment=Literal(comment)
@@ -27,5 +33,8 @@ class ObservableProperty(object):
 
 
     def get_uri(self):
+        """
+        get Observable Property id
+        """
         return self.property_id
 

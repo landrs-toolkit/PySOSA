@@ -17,6 +17,12 @@ class Sampling(object):
     """
 
     def __init__(self,label,comment):
+        """ instantiating Sampling object (procedure)
+            Args:
+                label, comment (literal): label and comment for the sampling procedure
+            Returns:
+                sampling object (str): with attributes for carrying out a sampling
+        """
         self.sampling_id = BNode()
         self.label = Literal(label)
         self.comment = Literal(comment)
@@ -27,14 +33,18 @@ class Sampling(object):
         obsgraph.add((self.sampling_id, RDFS.comment, self.comment))
         obsgraph.add((self.sampling_id, RDFS.label, self.label))
         obsgraph.add((self.sampling_id, cfg.sosa.datetime, self.dateTime))
-        #fix
-        #obsgraph.add((self.sampling_id, cfg.sosa.hasresult, self.simpleResult))
 
     def get_uri(self):
+        """
+        get sampling id
+        """
         return self.sampling_id
 
-    #add feature of interest
+
     def add_featureOfInterest(self, FeatureOfInterest):
+        """
+        add feature of Interest
+        """
         f_uri = FeatureOfInterest.get_uri()
         obsgraph.add((self.sampling_id, cfg.sosa.hasFeatureOfInterest, f_uri))
 

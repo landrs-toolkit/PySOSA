@@ -1,5 +1,5 @@
 from rdflib import Graph, URIRef, BNode, Literal, Namespace, RDF, RDFS
-from PySOSA.landrs_module import Platform, Sensor, Observation
-from PySOSA.landrs_module import FeatureOfInterest, ObservableProperty
-from PySOSA.landrs_module import Actuator, Procedure, Actuation, Stimulus, ActuableProperty
-from pyobs_pyobs import obsgraph, sosa, Sensor, ssnext
+from PySOSA import Platform, Sensor, Observation
+from PySOSA import FeatureOfInterest, ObservableProperty
+from PySOSA import Actuator, Procedure, Actuation, Stimulus, ActuableProperty
+from PySOSA import obsgraph, sosa, Sensor, ssnext

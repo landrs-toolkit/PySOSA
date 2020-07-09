@@ -16,6 +16,12 @@ class Procedure(object):
     """
 
     def __init__(self, comment, label):
+        """ instantiating Procedure object
+              Args:
+                  label, comment (literal): label and comment for the procedure
+              Returns:
+                  procedure (str): representing a workflow to carry out
+        """
         self.procedure_id = BNode()
         self.label = Literal(label)
         self.comment = Literal(comment)
@@ -30,24 +36,42 @@ class Procedure(object):
 
     #set procedure id
     def set_procedure_id(self, procedure_id):
+        """
+        setting procedure id
+        """
         self.procedure_id = procedure_id
 
-    #get procedure id
+
     def get_uri(self):
+        """
+        get procedure id
+        """
         return self.procedure_id
 
-    # set procedure input
+
     def set_procedure_input(self, input):
+        """
+        set procedure input
+        """
         self.input = input
 
-    # get procedure input
+
     def get_input(self):
+        """
+        get procedure input of a procedure
+        """
         return self.input
 
-        # set procedure output
+
     def set_procedure_output(self, output):
+        """
+        set the output of the procedure
+        """
         self.output = output
 
-        # get procedure output
+
     def get_output(self):
+        """
+        get the output of the procedure
+        """
         return self.output

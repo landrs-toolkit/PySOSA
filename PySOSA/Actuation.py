@@ -16,6 +16,12 @@ class Actuation(object):
     """
 
     def __init__(self,label,comment):
+        """ instantiating Actuation object representing SOSA actuation
+           Args:
+               label, comment (literal): label and comment for the actuation
+           Returns:
+               actuation object: instantiated with actuation  properties
+        """
         self.actuation_id = BNode()
         self.featureOfInterest = Literal
         self.label = Literal(label)
@@ -29,28 +35,46 @@ class Actuation(object):
         obsgraph.add((self.actuation_id, cfg.sosa.datetime, self.dateTime))
 
 
-    #get actuation id
+
     def get_uri(self):
+        """
+        get actuation id
+        """
         return self.actuation_id
 
-    #set result time
+
     def set_date_time(self, dateTime):
+        """
+        set date time
+        """
         self.dateTime = dateTime
 
-    # get result time
+
     def get_date_time(self):
+        """
+        get result time
+        """
         return self.dateTime
 
-    #set simple result
+
     def set_simple_Result(self, simpleResult):
+        """
+        set simple result
+        """
         self.simpleResult = simpleResult
 
-    # get simple result
+
     def get_simple_Result(self):
+        """
+        get simple result
+        """
         return self.simpleResult
 
-    #add feature of interest
+
     def add_featureOfInterest(self, FeatureOfInterest):
+        """
+        add feature of interest
+        """
         f_uri = FeatureOfInterest.get_uri()
         obsgraph.add((self.actuation_id, cfg.sosa.hasFeatureOfInterest, f_uri))
 

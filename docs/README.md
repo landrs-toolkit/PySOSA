@@ -10,8 +10,7 @@ for building linked data native drone data applications. LANDRS is a Sloan Found
 funded project to build open source APIs for managing scientific data on drones through the
 use of web standards and linked data technologies.
 
-Updated PySOSA Design diagram is [here](https://github.com/landrs-toolkit/PySOSA/blob/master/PySOSA_Design.png)
-
+Updated PySOSA Design diagram is [here](./PySOSADesign.png)
 
 The project endeavors to implement PySOSA: A python module for building SOSA  based RDF graphs.
 Sensor, Observation, Sample, and Actuator (SOSA) ontology, provides a lightweight core for Semantic Sensor Network (SSN).

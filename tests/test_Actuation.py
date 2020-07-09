@@ -4,8 +4,11 @@ from PySOSA import FeatureOfInterest
 
 class MyTestCase(unittest.TestCase):
 
-#Test add feature of interest to Actuation
+
     def test_add_featureOfInterest(self):
+        """
+        creates an FOI object and test add feature of interest to Actuation
+        """
         a1 = Actuation("Actuation 1", "switch on thermometer")
         feature = FeatureOfInterest("Feature 1", "temperature")
         a1.add_featureOfInterest(feature)

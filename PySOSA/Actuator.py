@@ -18,8 +18,14 @@ class Actuator(object):
     """
     actuations = []
 
-    #constructor parameters- label,comment, list of actuatable properties,list of procedures
+
     def __init__(self, *args):
+        """ instantiating Actuator object
+           Args:
+               *args (str): label, comment, actuatable property, prdocedure
+           Returns:
+               actuator object: instantiated with actuator  properties
+        """
         self.actuator_id = BNode()
         self.platform_id = BNode()
         self.label = Literal(args[0])
@@ -40,23 +46,41 @@ class Actuator(object):
                 obsgraph.add((self.sensor_id, cfg.sosa.implements, pro.label))
 
     def get_uri(self):
+        """
+        returns the actuator id
+        """
         return self.actuator_id
 
     def set_actuator_id(self, actuator_id):
+        """ setting actuator id
+           Args:
+               *actuator_id (str): the actuator id to be set to the actuator object
+           Returns:
+               actuator object: with the set actuator id
+        """
         self.actuator_id = actuator_id
 
-    #add a single procedure
+
     def add_procedure(self, pro):
+        """
+        takes a procedure and adds the procedure to the graph
+        """
         if isinstance(pro, Procedure):
             obsgraph.add((self.actuator_id, cfg.sosa.observes, pro.label))
 
-    #add a single  actuableProperty
+
     def add_actuatableProperty(self, actProp):
+        """
+        add a single  actuableProperty
+        """
         if isinstance(actProp, ActuatableProperty):
             obsgraph.add((self.actuator_id, cfg.sosa.observes, actProp.label))
 
-    #add actuation
+
     def add_actuation(self, actuation):
+        """
+        add actuation
+        """
         a_uri = actuation.get_uri()
         if isinstance(actuation, Actuation):
             obsgraph.add((self.actuator_id, cfg.sosa.madeActuation, a_uri))

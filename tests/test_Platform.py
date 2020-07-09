@@ -13,6 +13,9 @@ class MyTestCase(unittest.TestCase):
     """Test platform constructor """
 
     def test_create_platfrom(self):
+        """
+        creates platform, procedure object and tests adding a procedure to a sensor attached to the platform
+        """
         # procedure object
         proc1 = Procedure("procedure 1", "proc1")
         proc2 = Procedure("procedure 2", "proc2")
@@ -44,9 +47,12 @@ class MyTestCase(unittest.TestCase):
         #print(this_graph.serialize(format='turtle'))
         print(this_graph.serialize(format="ttl").decode('utf-8'))
 
-    """Test add a single sensor to platform method"""
+
 
     def test_add_sensor(self):
+        """
+        Test add a single sensor to platform method
+        """
         #empty platform
         p2 = Platform("platform 2", "p2", [], [], [])
 

@@ -10,6 +10,9 @@ class MyTestCase(unittest.TestCase):
     #Test setting procedure_id to sensor
 
     def test_set_procedure_id(self):
+        """
+        creates a procedure object and test setting that procedure's id
+        """
         procedure_id = "UND2020"
         proc1 = Procedure("procedure 1", "proc1", "Sensor calibration proc", "procedureInput", "procedureOutput")
         proc2 = Procedure("procedure 2", "proc2", "Sensor calibration proc", "procedureInput", "procedureOutput")
@@ -25,9 +28,12 @@ class MyTestCase(unittest.TestCase):
         obs4 = ObservableProperty("temperature","property 1")
         s4.add_obs_property(obs4)
 
-    #Test adding procedure to sensor
+
 
     def test_add_procedure(self):
+        """
+        Test adding procedure to sensor
+        """
         proc1 = Procedure("procedure 1", "proc1")
         proc2 = Procedure("procedure 2", "proc2")
         # list of procedures
