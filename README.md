@@ -99,13 +99,6 @@ Pull requests and issue submissions are highly welcomed. This is an open project
 excited to have you contribute to this project!
 See instructions on how you can contribute on this guide: https://github.com/landrs-toolkit/PySOSA/blob/master/CONTRIBUTING.md
 
-    1. Fork the Project repo 
-    2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
-    3. Commit your Changes (git commit -m 'Add some AmazingFeature')
-    4. Push to the Branch (git push origin feature/AmazingFeature)
-    5. Open a Pull Request
-    6. You can also get in touch via email landrs@nd.edu or visit https://www.landrs.org/
-    
     
 
 # Issues
