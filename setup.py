@@ -8,7 +8,7 @@ setup(
   author = 'Badisa Mosesane',                   # Type in your name
   author_email = 'landrs@nd.edu',      # Type in your E-Mail
   url = 'https://github.com/landrs-toolkit/PySOSA',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/landrs-toolkit/PySOSA',    # I explain this later on
+  download_url = 'https://github.com/landrs-toolkit/PySOSA/archive/release.tar.gz',    # I explain this later on
   keywords = ['building SOSA based graphs', 'RDF graphs', 'Python SOSA ontology', 'PySOSA'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'isodate==0.6.0',
