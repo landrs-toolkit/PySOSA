@@ -1,0 +1,8 @@
+isodate==0.6.0
+pyld==1.0.5
+pyobs==0.1
+pyparsing==2.4.5
+pytz==2019.3
+rdflib==4.2.2
+six==1.13.0
+websocket-client==0.56.0

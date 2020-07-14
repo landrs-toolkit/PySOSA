@@ -17,7 +17,7 @@ README = (HERE / "README.md").read_text()
 setup(
   name = 'PySOSA',         # How you named your package folder (MyLib)
   packages = ['PySOSA'],   # Chose the same as "name"
-  version = '0.0.1',      # Start with a small number and increase it with every change you make
+  version = '0.0.2',      # Start with a small number and increase it with every change you make
   license='Apache 2.0',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'A python module for building SOSA based RDF graphs',   # Give a short description about your library
   long_description=README,
